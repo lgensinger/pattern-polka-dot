@@ -1,6 +1,6 @@
 {
   "name": "@lgv/pattern-polka-dot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "ES6 svg polka dot pattern.",
   "main": "src/index.js",

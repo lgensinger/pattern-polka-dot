@@ -15,6 +15,13 @@ test("init", t => {
 
 });
 
+// TEST get DATA //
+test("get_data", t => {
+
+    t.true(typeof(pd.data) == "object");
+
+});
+
 // TEST GENERATE //
 test("generate", t => {
 
@@ -53,6 +60,13 @@ let pdp = new PolkaDotPattern();
 test("init_params", t => {
 
     t.true(pdp.unit != null);
+
+});
+
+// TEST get DATA //
+test("get_data_params", t => {
+
+    t.true(typeof(pdp.data) == "object");
 
 });
 
