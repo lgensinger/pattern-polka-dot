@@ -10,6 +10,7 @@ class PolkaDotPattern {
     constructor(unit=configurationDimension.unit) {
 
         // update self
+        this.className = null;
         this.density = null;
         this.pattern = null;
         this.radius = null;
@@ -58,7 +59,7 @@ class PolkaDotPattern {
             ];
 
             // update result
-            result = result.concat(dots);
+            result = result.concat(dots.concat(result));
 
         }
 
@@ -74,10 +75,11 @@ class PolkaDotPattern {
 
         // generate circles
         this.pattern
-            .selectAll("circle")
+            .selectAll(`.${this.className}`)
             .data(data)
             .enter()
             .append("circle")
+            .attr("class", this.className)
             .attr("cx", d => d.x)
             .attr("cy", d => d.y)
             .attr("r", d => d.r);
@@ -85,13 +87,14 @@ class PolkaDotPattern {
     }
 
     /**
-     * Generate an SVG hatch tessellation.
+     * Generate an SVG polka dot tessellation.
+     * @param {string} className - class for individual circle
      * @param {enum} density - 5 | 9 number of circles in a single swatch
      * @param {domNode} artboard - svg dom element
      * @param {string} id - pattern id
      * @param {float} radius - individual circle size
      */
-    generate(artboard, id, radius=null, density=5) {
+    generate(artboard, id, radius=null, density=5, className="dot") {
 
         // add pattern element
         this.pattern = select(artboard)
@@ -111,6 +114,7 @@ class PolkaDotPattern {
             .attr("height", this.unit);
 
         // update self
+        this.className = className;
         this.density = density;
         this.radius = radius;
 
